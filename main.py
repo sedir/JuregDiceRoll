@@ -3,10 +3,13 @@ from telebot import types
 bot = telebot.TeleBot("#BOT_TOKEN_ID#")
 
 def CheckDiceCall(d):
-	#print(d)
-	if d[0] == '*' and d[-1] == '*' and d[1] == 'd' and d[2:-1].isnumeric():
-		return True
-	else:
+	try:
+		if d[0] == '*' and d[-1] == '*' and d[1] == 'd' and d[2:-1].isnumeric():
+			return True
+		else:
+			return False
+	except:
+		print("Error getting from mesage: ", d)
 		return False
 
 @bot.message_handler(commands=['d100'])
