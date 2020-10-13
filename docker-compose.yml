@@ -1,0 +1,16 @@
+version: '3'
+services:
+  bot:
+    image: python:3-slim
+    container_name: jureg_dice_roll
+    volumes:
+      - ${PWD}:/home/bot
+    restart: on-failure
+    tty: true
+    environment:
+      TZ: "America/Sao_Paulo"
+    command: >
+      bash -c "cd /home/bot && 
+      pip3 install --upgrade pip && 
+      pip3 install -r ./requirements.txt && 
+      python3 main.py"
