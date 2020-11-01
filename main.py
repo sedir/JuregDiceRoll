@@ -36,8 +36,8 @@ def dicemenu(message):
     )
     dices = ["*d100*", "*d4*", "*d6*", "*d8*", "*d10*", "*d12*", "*d20*"]
     rkm.add(dices[0])
-    rkm.row(dices[1], dices[2], dices[3])
-    rkm.row(dices[4], dices[5], dices[6])
+    rkm.row(*dices[1:4])
+    rkm.row(*dices[4:7])
     msg = "Escolha um dado para rolar"
     bot.send_message(message.chat.id, msg, reply_markup=rkm)
     logger.info(f"Chat: {message.chat.id}, Command: /dicemenu")
